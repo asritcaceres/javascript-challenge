@@ -32,7 +32,7 @@ function runEnter() {
     d3.event.preventDefault();
     
     // Select the input element and get the raw HTML node
-    var inputElement = d3.select("#datetime");
+    var inputElement = d3.select(".form-control");
   
     // Get the value property of the input element
     var inputValue = inputElement.property("value");
@@ -40,7 +40,11 @@ function runEnter() {
     // console.log(inputValue);
     // console.log(tableData);
 
-     var filteredData = tableData.filter(newinfo => newinfo.datetime === inputValue);
+     var filteredData = tableData.filter(newinfo => newinfo.datetime === inputValue ||
+                                                    newinfo.city === inputValue ||
+                                                    newinfo.state === inputValue ||
+                                                    newinfo.country === inputValue ||
+                                                    newinfo.shape === inputValue);
      console.log(filteredData);
 //     //console.table(filteredData)
 
@@ -52,29 +56,3 @@ function runEnter() {
       });
    });
 }
-
-
-// THIS SECTION CAN BE IGNORED-> Personal reference of what was incorrect //
-// original code to try to get filter to work- created a list but all values are undefined (originally this was under console.log(filteredData))
-  // First, create an array with just the age values
-//   var ufo = filteredData.map(sighting => sighting.datetime);   var date = ufo.datetime;
-//   var city = ufo.city;
-//   var state = ufo.state;
-//   var country = ufo.country;
-//   var shape = ufo.shape;
-//   var duration = ufo.durationMinutes;
-//   var comments = ufo.comments;
-
-//   // Then, select the unordered list element by class name
-//   var list = d3.select(".list-group");
-
-
-//   // append stats to the list
-//   list.append("li", `Date: ${date}`);
-//   list.append("li").text(`City: ${city}`);
-//   list.append("li").text(`State: ${state}`);
-//   list.append("li").text(`Country: ${country}`);
-//   list.append("li").text(`Shape: ${shape}`);
-//   list.append("li").text(`Duration: ${duration}`);
-//   list.append("li").text(`Comments: ${comments}`);
-// }
